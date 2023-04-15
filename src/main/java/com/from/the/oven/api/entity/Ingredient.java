@@ -10,15 +10,15 @@ import jakarta.persistence.Table;
 /**
  * @author Vitalii Vasylykha
  * @company UnitedThinkers
- * @since 2023/04/11
+ * @since 2023/04/15
  */
 
 @Entity
-@Table(name = "pizza")
-public class Pizza {
+@Table(name = "ingredient")
+public class Ingredient {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "pizza_id")
+	@Column(name = "ingredient_id")
 	private Long id;
 
 	@Column(name = "name", unique = true)
@@ -30,13 +30,11 @@ public class Pizza {
 	@Column(name = "image")
 	private String image;
 
-	public Pizza() {
+	public String getImage() {
+		return image;
 	}
 
-	public Pizza(Long id, String name, String description, String image) {
-		this.id = id;
-		this.name = name;
-		this.description = description;
+	public void setImage(String image) {
 		this.image = image;
 	}
 
@@ -62,13 +60,5 @@ public class Pizza {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
 	}
 }

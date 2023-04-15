@@ -4,6 +4,7 @@ import com.from.the.oven.api.entity.Pizza;
 import com.from.the.oven.api.repository.PizzaRepository;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +15,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class PizzaService {
-	private final PizzaRepository pizzaRepository;
 
-	public PizzaService(PizzaRepository pizzaRepository) {
-		this.pizzaRepository = pizzaRepository;
-	}
+	@Autowired
+	private PizzaRepository pizzaRepository;
 
 	public List<Pizza> getAllPizzas(int limit) {
 		if (limit <= 0) {

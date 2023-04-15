@@ -4,14 +4,15 @@ DATABASE from_the_oven;
 CREATE TABLE ingredient
 (
     ingredient_id SERIAL PRIMARY KEY,
-    name          VARCHAR(100) NOT NULL,
+    name          VARCHAR(100) UNIQUE NOT NULL,
+    image         VARCHAR(255),
     description   TEXT
 );
 
 CREATE TABLE category
 (
     category_id SERIAL PRIMARY KEY,
-    name        VARCHAR(50) NOT NULL
+    name        VARCHAR(50) UNIQUE NOT NULL
 );
 
 
