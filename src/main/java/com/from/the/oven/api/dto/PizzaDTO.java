@@ -1,8 +1,9 @@
 package com.from.the.oven.api.dto;
 
+import com.from.the.oven.api.entity.Category;
+import com.from.the.oven.api.entity.Ingredient;
 import com.from.the.oven.api.entity.Pizza;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Vitalii Vasylykha
@@ -13,15 +14,15 @@ public class PizzaDTO {
 	private Long id;
 	private String name;
 	private String description;
-
 	private String image;
 	private List<String> ingredients;
-	private List<String> category;
-
+	private List<String> categories;
+	private Integer massSmall;
+	private Integer massMedium;
+	private Integer massLarge;
 	private Integer sizeSmall;
 	private Integer sizeMedium;
 	private Integer sizeLarge;
-
 	private Double priceSmall;
 	private Double priceMedium;
 	private Double priceLarge;
@@ -34,6 +35,27 @@ public class PizzaDTO {
 		this.name = pizza.getName();
 		this.image = pizza.getImage();
 		this.description = pizza.getDescription();
+		this.ingredients = pizza.getIngredients().stream().map(Ingredient::getName).toList();
+		this.categories = pizza.getCategories().stream().map(Category::getName).toList();
+		pizza.getPrices().forEach(price -> {
+			switch (price.getSize().getName()) {
+				case SMALL -> {
+					massSmall = price.getMass();
+					sizeSmall = price.getSize().getSize();
+					priceSmall = price.getPrice();
+				}
+				case MEDIUM -> {
+					massMedium = price.getMass();
+					sizeMedium = price.getSize().getSize();
+					priceMedium = price.getPrice();
+				}
+				case LARGE -> {
+					massLarge = price.getMass();
+					sizeLarge = price.getSize().getSize();
+					priceLarge = price.getPrice();
+				}
+			}
+		});
 	}
 
 	public Long getId() {
@@ -68,12 +90,12 @@ public class PizzaDTO {
 		this.ingredients = ingredients;
 	}
 
-	public List<String> getCategory() {
-		return category;
+	public List<String> getCategories() {
+		return categories;
 	}
 
-	public void setCategory(List<String> category) {
-		this.category = category;
+	public void setCategories(List<String> categories) {
+		this.categories = categories;
 	}
 
 	public Integer getSizeSmall() {
@@ -130,5 +152,29 @@ public class PizzaDTO {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public Integer getMassSmall() {
+		return massSmall;
+	}
+
+	public void setMassSmall(Integer massSmall) {
+		this.massSmall = massSmall;
+	}
+
+	public Integer getMassMedium() {
+		return massMedium;
+	}
+
+	public void setMassMedium(Integer massMedium) {
+		this.massMedium = massMedium;
+	}
+
+	public Integer getMassLarge() {
+		return massLarge;
+	}
+
+	public void setMassLarge(Integer massLarge) {
+		this.massLarge = massLarge;
 	}
 }

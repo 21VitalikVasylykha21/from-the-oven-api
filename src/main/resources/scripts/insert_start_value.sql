@@ -69,11 +69,12 @@ VALUES
     ((SELECT pizza_id FROM pizza WHERE name = 'Four Cheese'), (SELECT category_id FROM category WHERE name = 'Cheese'))
 ON CONFLICT DO NOTHING;
 
-INSERT INTO pizza_price (pizza_id, size_id, price)
+INSERT INTO pizza_price (pizza_id, size_id, price, mass)
 SELECT
     pizza.pizza_id,
     size.size_id,
-    ROUND(CAST(RANDOM() * (20 - 10) + 10 AS NUMERIC), 2)
+    ROUND(CAST(size.size_id * (RANDOM() * (20 - 10) + 10) AS NUMERIC), 2),
+    ROUND(CAST(size.size_id * (RANDOM() * (500 - 400) + 400) AS NUMERIC), 0)
 FROM pizza
          CROSS JOIN size
 ON CONFLICT DO NOTHING;

@@ -42,10 +42,12 @@ CREATE TABLE pizza_category
 
 CREATE TABLE pizza_price
 (
+    pizza_price_id  SERIAL PRIMARY KEY,
     pizza_id INTEGER REFERENCES pizza (pizza_id),
     size_id  INTEGER REFERENCES size (size_id),
-    price    DECIMAL(6, 2),
-    PRIMARY KEY (pizza_id, size_id)
+    price    DECIMAL(6, 2) NOT NULL,
+    mass     NUMERIC(10) NOT NULL,
+    UNIQUE(pizza_id,size_id)
 );
 
 CREATE TABLE pizza_ingredient
