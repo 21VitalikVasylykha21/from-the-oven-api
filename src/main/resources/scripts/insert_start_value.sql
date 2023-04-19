@@ -57,7 +57,7 @@ VALUES
 INSERT INTO pizza_category (pizza_id, category_id)
 VALUES
     ((SELECT pizza_id FROM pizza WHERE name = 'Margherita'), (SELECT category_id FROM category WHERE name = 'Margherita')),
-    ((SELECT pizza_id FROM pizza WHERE name = 'Margherita'), SELECT category_id FROM category WHERE name = 'Vegetarian')),
+    ((SELECT pizza_id FROM pizza WHERE name = 'Margherita'), (SELECT category_id FROM category WHERE name = 'Vegetarian')),
     ((SELECT pizza_id FROM pizza WHERE name = 'Pepperoni'), (SELECT category_id FROM category WHERE name = 'Meat Lovers')),
     ((SELECT pizza_id FROM pizza WHERE name = 'Hawaiian'), (SELECT category_id FROM category WHERE name = 'Hawaiian')),
     ((SELECT pizza_id FROM pizza WHERE name = 'Meat Lovers'), (SELECT category_id FROM category WHERE name = 'Meat Lovers')),
