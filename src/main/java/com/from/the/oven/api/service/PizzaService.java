@@ -30,7 +30,7 @@ public class PizzaService {
 		return pizzaRepository.findById(id);
 	}
 
-	public List<Pizza> findPizzaByName(String name) {
-		return pizzaRepository.findByName(name.toLowerCase());
+	public List<Pizza> searchPizza(String name, List<String> ingredients, List<String> categories) {
+		return pizzaRepository.findByNameAndIngredientsAndCategories(name, ingredients, categories);
 	}
 }

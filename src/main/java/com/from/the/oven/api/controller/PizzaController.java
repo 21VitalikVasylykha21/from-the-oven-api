@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @company UnitedThinkers
  * @since 2023/04/12
  */
+@CrossOrigin
 @RestController
 @RequestMapping("api/v1/pizzas")
 public class PizzaController {
@@ -43,8 +45,10 @@ public class PizzaController {
 	}
 
 	@GetMapping("/search")
-	public ResponseEntity<List<PizzaDTO>> searchPizzasByName(@RequestParam("name") String name) {
-		List<Pizza> pizzas = pizzaService.findPizzaByName(name);
+	public ResponseEntity<List<PizzaDTO>> searchPizzas(@RequestParam(name = "name", required = false) String name,
+													   @RequestParam(name = "ingredients", required = false) List<String> ingredients,
+													   @RequestParam(name = "categories", required = false) List<String> categories) {
+		List<Pizza> pizzas = pizzaService.searchPizza(name, ingredients, categories);
 		return ResponseEntity.ok(
 				pizzas.stream()
 						.map(PizzaDTO::new)
