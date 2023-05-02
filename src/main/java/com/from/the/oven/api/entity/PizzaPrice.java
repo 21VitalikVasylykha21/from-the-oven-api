@@ -35,6 +35,15 @@ public class PizzaPrice {
 	@Column(name = "mass")
 	private Integer mass;
 
+	public PizzaPrice() {
+	}
+
+	public PizzaPrice(Size size, Integer mass, Double price) {
+		this.size = size;
+		this.price = price;
+		this.mass = mass;
+	}
+
 	public Double getPrice() {
 		return price;
 	}

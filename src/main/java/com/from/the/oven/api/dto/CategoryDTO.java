@@ -7,7 +7,7 @@ import com.from.the.oven.api.entity.Category;
  * @company UnitedThinkers
  * @since 2023/04/17
  */
-public class CategoryDTO {
+public class CategoryDTO implements EntityDTO {
 	private Long id;
 	private String name;
 

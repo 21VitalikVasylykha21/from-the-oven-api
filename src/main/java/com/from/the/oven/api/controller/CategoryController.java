@@ -1,10 +1,9 @@
 package com.from.the.oven.api.controller;
 
+import com.from.the.oven.api.dto.ApiResponse;
 import com.from.the.oven.api.dto.CategoryDTO;
 import com.from.the.oven.api.service.CategoryService;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +23,8 @@ public class CategoryController {
 	private CategoryService categoryService;
 
 	@GetMapping
-	public ResponseEntity<List<CategoryDTO>> getAllCategories(@RequestParam(defaultValue = "20") Integer limit) {
-		return ResponseEntity.ok(
+	public ApiResponse<CategoryDTO> getAllCategories(@RequestParam(defaultValue = "20") Integer limit) {
+		return new ApiResponse<>(
 				categoryService.getAllCategories(limit).stream()
 						.map(CategoryDTO::new)
 						.toList()

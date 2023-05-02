@@ -7,7 +7,7 @@ import com.from.the.oven.api.entity.Ingredient;
  * @company UnitedThinkers
  * @since 2023/04/15
  */
-public class IngredientDTO {
+public class IngredientDTO implements EntityDTO{
 	private Long id;
 	private String name;
 	private String description;

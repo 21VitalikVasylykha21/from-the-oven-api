@@ -1,6 +1,7 @@
 package com.from.the.oven.api.repository;
 
 import com.from.the.oven.api.entity.Ingredient;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -9,4 +10,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @since 2023/04/15
  */
 public interface IngredientRepository extends JpaRepository<Ingredient, Long> {
+	Optional<Ingredient> findByName(String name);
 }

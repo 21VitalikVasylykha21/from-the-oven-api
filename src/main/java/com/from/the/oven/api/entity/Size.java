@@ -1,5 +1,6 @@
 package com.from.the.oven.api.entity;
 
+import com.from.the.oven.api.enums.PizzaSize;
 import com.from.the.oven.api.util.SizeTypeConverter;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
@@ -25,10 +26,18 @@ public class Size {
 
 	@Column(name = "name", unique = true)
 	@Convert(converter = SizeTypeConverter.class)
-	private SizeType name;
+	private PizzaSize name;
 
 	@Column(name = "size_cm")
 	private Integer size;
+
+	public Size() {
+	}
+
+	public Size(PizzaSize name, Integer size) {
+		this.name = name;
+		this.size = size;
+	}
 
 	public Long getId() {
 		return id;
@@ -38,11 +47,11 @@ public class Size {
 		this.id = id;
 	}
 
-	public SizeType getName() {
+	public PizzaSize getName() {
 		return name;
 	}
 
-	public void setName(SizeType name) {
+	public void setName(PizzaSize name) {
 		this.name = name;
 	}
 

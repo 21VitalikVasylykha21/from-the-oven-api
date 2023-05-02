@@ -23,6 +23,13 @@ public class Category {
 	@Column(name = "name", unique = true)
 	private String name;
 
+	public Category() {
+	}
+
+	public Category(String name) {
+		this.name = name;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -37,5 +44,21 @@ public class Category {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (!(o instanceof Category category)) {
+			return false;
+		}
+		return getName().equals(category.getName());
+	}
+
+	@Override
+	public int hashCode() {
+		return getName().hashCode();
 	}
 }

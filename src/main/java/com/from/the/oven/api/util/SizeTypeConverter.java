@@ -1,6 +1,6 @@
 package com.from.the.oven.api.util;
 
-import com.from.the.oven.api.entity.SizeType;
+import com.from.the.oven.api.enums.PizzaSize;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
@@ -10,21 +10,21 @@ import jakarta.persistence.Converter;
  * @since 2023/04/17
  */
 @Converter(autoApply = true)
-public class SizeTypeConverter implements AttributeConverter<SizeType, String> {
+public class SizeTypeConverter implements AttributeConverter<PizzaSize, String> {
 
 	@Override
-	public String convertToDatabaseColumn(SizeType sizeType) {
-		return sizeType.getName();
+	public String convertToDatabaseColumn(PizzaSize pizzaSize) {
+		return pizzaSize.getName();
 	}
 
 	@Override
-	public SizeType convertToEntityAttribute(String dbValue) {
+	public PizzaSize convertToEntityAttribute(String dbValue) {
 		if (dbValue == null) {
 			return null;
 		}
-		for (SizeType sizeType : SizeType.values()) {
-			if (sizeType.getName().equalsIgnoreCase(dbValue)) {
-				return sizeType;
+		for (PizzaSize pizzaSize : PizzaSize.values()) {
+			if (pizzaSize.getName().equalsIgnoreCase(dbValue)) {
+				return pizzaSize;
 			}
 		}
 		throw new IllegalArgumentException("Unknown value: " + dbValue);

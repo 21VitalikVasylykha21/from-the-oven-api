@@ -1,15 +1,18 @@
 package com.from.the.oven.api.controller;
 
+import com.from.the.oven.api.dto.ApiResponse;
 import com.from.the.oven.api.dto.PizzaDTO;
 import com.from.the.oven.api.entity.Pizza;
 import com.from.the.oven.api.service.PizzaService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,32 +30,42 @@ public class PizzaController {
 	private PizzaService pizzaService;
 
 	@GetMapping
-	public ResponseEntity<List<PizzaDTO>> getAllPizzas(@RequestParam(defaultValue = "20") Integer limit) {
-		return ResponseEntity.ok(
-				pizzaService.getAllPizzas(limit).stream()
+	public ApiResponse<PizzaDTO> getAllPizzas(@RequestParam(name = "limit", defaultValue = "20") Integer limit) {
+		return new ApiResponse<>(
+				pizzaService.getAll(limit).stream()
 						.map(PizzaDTO::new)
 						.toList()
 		);
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<PizzaDTO> findPizzaById(@PathVariable Long id) {
-		Optional<Pizza> pizza = pizzaService.findPizzaById(id);
+	public ApiResponse<PizzaDTO> findPizzaById(@PathVariable Long id) {
+		Optional<Pizza> pizza = pizzaService.findById(id);
 		if (pizza.isEmpty()) {
-			return ResponseEntity.notFound().build();
+			return new ApiResponse<>(HttpStatus.NOT_FOUND);
 		}
-		return ResponseEntity.ok(new PizzaDTO(pizza.get()));
+		return new ApiResponse<>(List.of(new PizzaDTO(pizza.get())));
 	}
 
 	@GetMapping("/search")
-	public ResponseEntity<List<PizzaDTO>> searchPizzas(@RequestParam(name = "name", required = false) String name,
-													   @RequestParam(name = "ingredients", required = false) List<String> ingredients,
-													   @RequestParam(name = "categories", required = false) List<String> categories) {
-		List<Pizza> pizzas = pizzaService.searchPizza(name, ingredients, categories);
-		return ResponseEntity.ok(
-				pizzas.stream()
-						.map(PizzaDTO::new)
-						.toList()
-		);
+	public ApiResponse<PizzaDTO> searchPizzas(@RequestParam(name = "name", required = false) String name,
+											  @RequestParam(name = "ingredients", defaultValue = " ", required = false) List<String> ingredients,
+											  @RequestParam(name = "categories", defaultValue = " ", required = false) List<String> categories,
+											  @RequestParam(name = "page", defaultValue = "1") Integer page,
+											  @RequestParam(name = "limit", defaultValue = "20") Integer limit) {
+		List<Pizza> pizzas = pizzaService.search(name, ingredients, categories, limit, page);
+		return new ApiResponse<>(pizzas.stream()
+				.map(PizzaDTO::new)
+				.toList());
+	}
+
+	@PatchMapping("/{id}")
+	public ApiResponse<PizzaDTO> updatePizza(@PathVariable Long id,
+											 @RequestBody PizzaDTO updatedPizza) {
+		Optional<Pizza> pizza = pizzaService.update(id, updatedPizza);
+		if (pizza.isEmpty()) {
+			return new ApiResponse<>(HttpStatus.NOT_FOUND);
+		}
+		return new ApiResponse<>(List.of(new PizzaDTO(pizza.get())));
 	}
 }

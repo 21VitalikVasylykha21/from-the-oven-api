@@ -30,6 +30,13 @@ public class Ingredient {
 	@Column(name = "image")
 	private String image;
 
+	public Ingredient() {
+	}
+
+	public Ingredient(String name) {
+		this.name = name;
+	}
+
 	public String getImage() {
 		return image;
 	}
@@ -60,5 +67,21 @@ public class Ingredient {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (!(o instanceof Ingredient that)) {
+			return false;
+		}
+		return getName().equals(that.getName());
+	}
+
+	@Override
+	public int hashCode() {
+		return getName().hashCode();
 	}
 }

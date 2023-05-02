@@ -1,18 +1,18 @@
-package com.from.the.oven.api.entity;
+package com.from.the.oven.api.enums;
 
 /**
  * @author Vitalii Vasylykha
  * @company UnitedThinkers
  * @since 2023/04/17
  */
-public enum SizeType {
+public enum PizzaSize {
 	SMALL("Small"),
 	MEDIUM("Medium"),
 	LARGE("Large");
 
 	private final String name;
 
-	SizeType(String name) {
+	PizzaSize(String name) {
 		this.name = name;
 	}
 

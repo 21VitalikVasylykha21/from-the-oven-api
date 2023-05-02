@@ -1,10 +1,9 @@
 package com.from.the.oven.api.controller;
 
+import com.from.the.oven.api.dto.ApiResponse;
 import com.from.the.oven.api.dto.IngredientDTO;
 import com.from.the.oven.api.service.IngredientService;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +24,8 @@ public class IngredientController {
 	private IngredientService ingredientService;
 
 	@GetMapping
-	public ResponseEntity<List<IngredientDTO>> getAllIngredients(@RequestParam(defaultValue = "20") Integer limit) {
-		return ResponseEntity.ok(
+	public ApiResponse<IngredientDTO> getAllIngredients(@RequestParam(defaultValue = "100") Integer limit) {
+		return new ApiResponse<>(
 				ingredientService.getAllIngredients(limit).stream()
 						.map(IngredientDTO::new)
 						.toList()
