@@ -39,11 +39,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.chainfulness</groupId>
-            <artifactId>lp-loader</artifactId>
-            <version>31.1-jre</version>
-        </dependency>
     </dependencies>
 
     <build>
