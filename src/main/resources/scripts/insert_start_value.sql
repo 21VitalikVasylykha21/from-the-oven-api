@@ -21,6 +21,8 @@ VALUES ('Tomatoes', 'Fresh, ripe tomatoes'),
        ('Ricotta Cheese', 'Creamy ricotta cheese')
 ON CONFLICT DO NOTHING;
 
+UPDATE ingredient SET image = 'https://artgallery-bucket.s3.eu-central-1.amazonaws.com/pngwing.com.png' WHERE ingredient_id > 1;
+
 INSERT INTO category (name)
 VALUES ('Meat Lovers'),
        ('Vegetarian'),
