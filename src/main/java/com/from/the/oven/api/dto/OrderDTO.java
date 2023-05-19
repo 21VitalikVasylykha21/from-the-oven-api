@@ -20,7 +20,7 @@ public class OrderDTO {
 	private String customerName;
 	private String customerTelephone;
 	private String customerComment;
-	private List<OrderInfoDTO> orderInfoDTO;
+	private List<OrderInfoDTO> orderInfo;
 
 	public OrderDTO() {
 	}
@@ -35,8 +35,8 @@ public class OrderDTO {
 		this.customerName = order.getCustomerName();
 		this.customerTelephone = order.getCustomerTelephone();
 		this.customerComment = order.getCustomerComment();
-		this.orderInfoDTO = new ArrayList<>(order.getOrderInfo().size());
-		order.getOrderInfo().forEach(orderInfo -> orderInfoDTO.add(new OrderInfoDTO(orderInfo)));
+		this.orderInfo = new ArrayList<>(order.getOrderInfo().size());
+		order.getOrderInfo().forEach(orderInfo -> this.orderInfo.add(new OrderInfoDTO(orderInfo)));
 	}
 
 	public Long getId() {
@@ -111,11 +111,11 @@ public class OrderDTO {
 		this.customerComment = customerComment;
 	}
 
-	public List<OrderInfoDTO> getOrderInfoDTO() {
-		return orderInfoDTO;
+	public List<OrderInfoDTO> getOrderInfo() {
+		return orderInfo;
 	}
 
-	public void setOrderInfoDTO(List<OrderInfoDTO> orderInfoDTO) {
-		this.orderInfoDTO = orderInfoDTO;
+	public void setOrderInfo(List<OrderInfoDTO> orderInfo) {
+		this.orderInfo = orderInfo;
 	}
 }

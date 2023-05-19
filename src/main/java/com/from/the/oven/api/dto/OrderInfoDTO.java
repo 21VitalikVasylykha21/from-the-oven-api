@@ -8,38 +8,38 @@ import com.from.the.oven.api.entity.OrderInfo;
  * @since 2023/05/18
  */
 public class OrderInfoDTO {
-	private String pizzaName;
-	private String pizzaSize;
-	private Integer pizzaCount;
+	private String name;
+	private Integer size;
+	private Integer count;
 
 
 	public OrderInfoDTO(OrderInfo orderInfo) {
-		this.pizzaName = orderInfo.getPizzaPrice().getPizza().getName();
-		this.pizzaSize = orderInfo.getPizzaPrice().getSize().getName().getName();
-		this.pizzaCount = orderInfo.getCount();
+		this.name = orderInfo.getPizzaPrice().getPizza().getName();
+		this.size = orderInfo.getPizzaPrice().getSize().getSize();
+		this.count = orderInfo.getCount();
 	}
 
-	public String getPizzaName() {
-		return pizzaName;
+	public String getName() {
+		return name;
 	}
 
-	public void setPizzaName(String pizzaName) {
-		this.pizzaName = pizzaName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getPizzaSize() {
-		return pizzaSize;
+	public Integer getSize() {
+		return size;
 	}
 
-	public void setPizzaSize(String pizzaSize) {
-		this.pizzaSize = pizzaSize;
+	public void setSize(Integer size) {
+		this.size = size;
 	}
 
-	public Integer getPizzaCount() {
-		return pizzaCount;
+	public Integer getCount() {
+		return count;
 	}
 
-	public void setPizzaCount(Integer pizzaCount) {
-		this.pizzaCount = pizzaCount;
+	public void setCount(Integer count) {
+		this.count = count;
 	}
 }
