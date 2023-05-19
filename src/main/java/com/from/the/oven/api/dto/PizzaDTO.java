@@ -18,13 +18,11 @@ public class PizzaDTO implements EntityDTO {
 	private List<String> ingredients;
 	private List<String> categories;
 	private Integer massSmall;
-	private Integer massMedium;
 	private Integer massLarge;
 	private Integer sizeSmall;
-	private Integer sizeMedium;
 	private Integer sizeLarge;
+	private Integer rating;
 	private Double priceSmall;
-	private Double priceMedium;
 	private Double priceLarge;
 
 	public PizzaDTO() {
@@ -34,6 +32,7 @@ public class PizzaDTO implements EntityDTO {
 		this.id = pizza.getId();
 		this.name = pizza.getName();
 		this.image = pizza.getImage();
+		this.rating = pizza.getRating();
 		this.description = pizza.getDescription();
 		this.ingredients = pizza.getIngredients().stream().map(Ingredient::getName).toList();
 		this.categories = pizza.getCategories().stream().map(Category::getName).toList();
@@ -44,11 +43,6 @@ public class PizzaDTO implements EntityDTO {
 					sizeSmall = price.getSize().getSize();
 					priceSmall = price.getPrice();
 				}
-				case MEDIUM -> {
-					massMedium = price.getMass();
-					sizeMedium = price.getSize().getSize();
-					priceMedium = price.getPrice();
-				}
 				case LARGE -> {
 					massLarge = price.getMass();
 					sizeLarge = price.getSize().getSize();
@@ -56,6 +50,14 @@ public class PizzaDTO implements EntityDTO {
 				}
 			}
 		});
+	}
+
+	public Integer getRating() {
+		return rating;
+	}
+
+	public void setRating(Integer rating) {
+		this.rating = rating;
 	}
 
 	public Long getId() {
@@ -106,14 +108,6 @@ public class PizzaDTO implements EntityDTO {
 		this.sizeSmall = sizeSmall;
 	}
 
-	public Integer getSizeMedium() {
-		return sizeMedium;
-	}
-
-	public void setSizeMedium(Integer sizeMedium) {
-		this.sizeMedium = sizeMedium;
-	}
-
 	public Integer getSizeLarge() {
 		return sizeLarge;
 	}
@@ -128,14 +122,6 @@ public class PizzaDTO implements EntityDTO {
 
 	public void setPriceSmall(Double priceSmall) {
 		this.priceSmall = priceSmall;
-	}
-
-	public Double getPriceMedium() {
-		return priceMedium;
-	}
-
-	public void setPriceMedium(Double priceMedium) {
-		this.priceMedium = priceMedium;
 	}
 
 	public Double getPriceLarge() {
@@ -160,14 +146,6 @@ public class PizzaDTO implements EntityDTO {
 
 	public void setMassSmall(Integer massSmall) {
 		this.massSmall = massSmall;
-	}
-
-	public Integer getMassMedium() {
-		return massMedium;
-	}
-
-	public void setMassMedium(Integer massMedium) {
-		this.massMedium = massMedium;
 	}
 
 	public Integer getMassLarge() {

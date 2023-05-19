@@ -7,7 +7,6 @@ package com.from.the.oven.api.enums;
  */
 public enum PizzaSize {
 	SMALL("Small"),
-	MEDIUM("Medium"),
 	LARGE("Large");
 
 	private final String name;

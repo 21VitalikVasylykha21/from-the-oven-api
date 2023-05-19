@@ -8,6 +8,8 @@ import com.from.the.oven.api.entity.PizzaCategory;
 import com.from.the.oven.api.entity.PizzaCategoryId;
 import com.from.the.oven.api.entity.PizzaIngredient;
 import com.from.the.oven.api.entity.PizzaIngredientId;
+import com.from.the.oven.api.entity.PizzaPrice;
+import com.from.the.oven.api.enums.PizzaSize;
 import com.from.the.oven.api.repository.CategoryRepository;
 import com.from.the.oven.api.repository.IngredientRepository;
 import com.from.the.oven.api.repository.PizzaCategoryRepository;
@@ -16,6 +18,7 @@ import com.from.the.oven.api.repository.PizzaPriceRepository;
 import com.from.the.oven.api.repository.PizzaRepository;
 import io.micrometer.common.util.StringUtils;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -71,10 +74,23 @@ public class PizzaService {
 		return findById(id);
 	}
 
+	public Pizza create(PizzaDTO updatePizzaDto) {
+		return new Pizza();
+	}
+
+	public void delete(Long id) {
+		Optional<Pizza> optionalPizza = findById(id);
+		if (optionalPizza.isEmpty()) {
+			throw new IllegalArgumentException("Not found pizza");
+		}
+		pizzaRepository.delete(optionalPizza.get());
+	}
+
 	private void updatePizzaInfo(Pizza existingPizza, PizzaDTO updatePizzaDto) {
 		existingPizza.setName(StringUtils.isNotBlank(updatePizzaDto.getName()) ? updatePizzaDto.getName() : existingPizza.getName());
 		existingPizza.setDescription(StringUtils.isNotBlank(updatePizzaDto.getDescription()) ? updatePizzaDto.getDescription() : existingPizza.getDescription());
 		existingPizza.setImage(StringUtils.isNotBlank(updatePizzaDto.getImage()) ? updatePizzaDto.getImage() : existingPizza.getImage());
+		existingPizza.setRating(Objects.isNull(updatePizzaDto.getRating()) ? existingPizza.getRating() : updatePizzaDto.getRating());
 		pizzaRepository.save(existingPizza);
 	}
 
@@ -89,15 +105,30 @@ public class PizzaService {
 	}
 
 	private void updatePriceTable(Pizza existingPizza, PizzaDTO updatePizzaDto) {
-//		existingPizza.getPrices().stream()
-//				.filter(price -> price.getSize().getName().equals(PizzaSize.SMALL))
-//				.forEach(price -> {
-//					if (!price.getMass().equals(updatePizzaDto.getMassSmall())
-//							|| !price.getMass().equals(updatePizzaDto.getMassSmall())) {
-//
-//						pizzaPriceRepository.save(new PizzaPrice(new Size(PizzaSize.SMALL), updatePizzaDto.getMassSmall(), updatePizzaDto.getPriceSmall()));
-//					}
-//				});
+		PizzaPrice smallPizzaPrice = existingPizza.getPrices().stream()
+				.filter(price -> price.getSize().getName().equals(PizzaSize.SMALL))
+				.findFirst()
+				.get();
+		if (updatePizzaDto.getPriceSmall() != null && !smallPizzaPrice.getPrice().equals(updatePizzaDto.getPriceSmall())) {
+			smallPizzaPrice.setPrice(updatePizzaDto.getPriceSmall());
+			pizzaPriceRepository.save(smallPizzaPrice);
+		}
+		if (updatePizzaDto.getMassSmall() != null && !smallPizzaPrice.getMass().equals(updatePizzaDto.getMassSmall())) {
+			smallPizzaPrice.setMass(updatePizzaDto.getMassSmall());
+			pizzaPriceRepository.save(smallPizzaPrice);
+		}
+		PizzaPrice largePizzaPrice = existingPizza.getPrices().stream()
+				.filter(price -> price.getSize().getName().equals(PizzaSize.LARGE))
+				.findFirst()
+				.get();
+		if (updatePizzaDto.getPriceLarge() != null && !largePizzaPrice.getPrice().equals(updatePizzaDto.getPriceLarge())) {
+			largePizzaPrice.setPrice(updatePizzaDto.getPriceLarge());
+			pizzaPriceRepository.save(largePizzaPrice);
+		}
+		if (updatePizzaDto.getMassLarge() != null && !largePizzaPrice.getMass().equals(updatePizzaDto.getMassLarge())) {
+			largePizzaPrice.setMass(updatePizzaDto.getMassLarge());
+			pizzaPriceRepository.save(largePizzaPrice);
+		}
 	}
 
 	private void addIngredient(Pizza existingPizza, PizzaDTO updatePizzaDto) {

@@ -35,6 +35,9 @@ public class Pizza {
 	@Column(name = "image")
 	private String image;
 
+	@Column(name = "rating")
+	private Integer rating;
+
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(
 			name = "pizza_ingredient",
@@ -60,6 +63,14 @@ public class Pizza {
 	private List<PizzaPrice> prices;
 
 	public Pizza() {
+	}
+
+	public Integer getRating() {
+		return rating;
+	}
+
+	public void setRating(Integer rating) {
+		this.rating = rating;
 	}
 
 	public List<Category> getCategories() {

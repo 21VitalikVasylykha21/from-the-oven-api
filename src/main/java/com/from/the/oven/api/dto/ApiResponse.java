@@ -10,32 +10,40 @@ import org.springframework.http.HttpStatus;
  */
 public class ApiResponse<T> {
 
-	private HttpStatus status;
+	private Integer status;
 	private Integer total;
 	private List<T> result;
 
 	public ApiResponse(HttpStatus status) {
-		this.status = status;
+		this.status = status.value();
+		this.total = null;
+		this.result = null;
 	}
 
-	public ApiResponse(List<T> result) {
-		this.status = result.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK;
+	public ApiResponse(HttpStatus status, RuntimeException exception) {
+		this.status = status.value();
+		this.result = List.of((T) exception.getMessage());
+		this.total = null;
+	}
+
+	public ApiResponse(HttpStatus status, List<T> result) {
+		this.status = HttpStatus.OK.value();
 		this.total = result.size();
 		this.result = result;
 	}
 
-	public ApiResponse(HttpStatus status, Integer total, List<T> result) {
-		this.status = status;
-		this.total = total;
+	public ApiResponse(List<T> result) {
+		this.status = HttpStatus.OK.value();
+		this.total = result.size();
 		this.result = result;
 	}
 
-	public HttpStatus getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
 	public void setStatus(HttpStatus status) {
-		this.status = status;
+		this.status = status.value();
 	}
 
 	public Integer getTotal() {

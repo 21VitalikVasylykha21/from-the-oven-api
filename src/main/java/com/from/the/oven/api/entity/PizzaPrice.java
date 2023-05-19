@@ -29,6 +29,10 @@ public class PizzaPrice {
 	@JoinColumn(name = "size_id")
 	private Size size;
 
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "pizza_id")
+	private Pizza pizza;
+
 	@Column(name = "price")
 	private Double price;
 
@@ -74,5 +78,13 @@ public class PizzaPrice {
 
 	public void setSize(Size size) {
 		this.size = size;
+	}
+
+	public Pizza getPizza() {
+		return pizza;
+	}
+
+	public void setPizza(Pizza pizza) {
+		this.pizza = pizza;
 	}
 }
