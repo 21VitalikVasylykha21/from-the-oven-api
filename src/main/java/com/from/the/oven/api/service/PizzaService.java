@@ -1,6 +1,7 @@
 package com.from.the.oven.api.service;
 
 import com.from.the.oven.api.dto.PizzaDTO;
+import com.from.the.oven.api.dto.PizzaSearchResponse;
 import com.from.the.oven.api.entity.Category;
 import com.from.the.oven.api.entity.Ingredient;
 import com.from.the.oven.api.entity.Pizza;
@@ -21,6 +22,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -56,9 +58,9 @@ public class PizzaService {
 		return pizzaRepository.findById(id);
 	}
 
-	public List<Pizza> search(String name, List<String> ingredients, List<String> categories, Integer limit, Integer page) {
-		Integer offset = (page - 1) * limit;
-		return pizzaRepository.findByNameAndIngredientsAndCategories(name, ingredients, categories, limit, offset);
+	public PizzaSearchResponse search(String name, List<String> ingredients, List<String> categories, Integer limit, Integer page) {
+		Page<Pizza> pizzas = pizzaRepository.findByNameAndIngredientsAndCategories(name, ingredients, categories, PageRequest.of(page - 1, limit));
+		return new PizzaSearchResponse(pizzas.getTotalElements(), pizzas.getContent());
 	}
 
 	public Optional<Pizza> update(Long id, PizzaDTO updatePizzaDto) {

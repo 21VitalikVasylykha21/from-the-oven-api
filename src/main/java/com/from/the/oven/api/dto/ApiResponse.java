@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 public class ApiResponse<T> {
 
 	private Integer status;
-	private Integer total;
+	private Long total;
 	private List<T> result;
 
 	public ApiResponse(HttpStatus status) {
@@ -27,14 +27,20 @@ public class ApiResponse<T> {
 	}
 
 	public ApiResponse(HttpStatus status, List<T> result) {
+		this.status = status.value();
+		this.total = (long) result.size();
+		this.result = result;
+	}
+
+	public ApiResponse(Long total, List<T> result) {
 		this.status = HttpStatus.OK.value();
-		this.total = result.size();
+		this.total = total;
 		this.result = result;
 	}
 
 	public ApiResponse(List<T> result) {
 		this.status = HttpStatus.OK.value();
-		this.total = result.size();
+		this.total = (long) result.size();
 		this.result = result;
 	}
 
@@ -46,11 +52,11 @@ public class ApiResponse<T> {
 		this.status = status.value();
 	}
 
-	public Integer getTotal() {
+	public Long getTotal() {
 		return total;
 	}
 
-	public void setTotal(Integer total) {
+	public void setTotal(Long total) {
 		this.total = total;
 	}
 

@@ -2,6 +2,7 @@ package com.from.the.oven.api.controller;
 
 import com.from.the.oven.api.dto.ApiResponse;
 import com.from.the.oven.api.dto.PizzaDTO;
+import com.from.the.oven.api.dto.PizzaSearchResponse;
 import com.from.the.oven.api.entity.Pizza;
 import com.from.the.oven.api.service.PizzaService;
 import java.util.List;
@@ -55,10 +56,11 @@ public class PizzaController {
 											  @RequestParam(name = "categories", defaultValue = " ", required = false) List<String> categories,
 											  @RequestParam(name = "page", defaultValue = "1") Integer page,
 											  @RequestParam(name = "limit", defaultValue = "20") Integer limit) {
-		List<Pizza> pizzas = pizzaService.search(name, ingredients, categories, limit, page);
-		return new ApiResponse<>(pizzas.stream()
-				.map(PizzaDTO::new)
-				.toList());
+		PizzaSearchResponse pizzaSearchResponse = pizzaService.search(name, ingredients, categories, limit, page);
+		return new ApiResponse<>(pizzaSearchResponse.total(),
+				pizzaSearchResponse.pizzas().stream()
+						.map(PizzaDTO::new)
+						.toList());
 	}
 
 	@PatchMapping("/{id}")
