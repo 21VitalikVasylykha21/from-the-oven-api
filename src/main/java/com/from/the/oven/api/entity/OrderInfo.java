@@ -9,6 +9,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 /**
  * @author Vitalii Vasylykha
@@ -25,13 +27,17 @@ public class OrderInfo {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "pizza_order_id")
+	@NotNull(message = "Order is required")
 	private Order order;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "pizza_price_id")
+	@NotNull(message = "Pizza price is required")
 	private PizzaPrice pizzaPrice;
 
 	@Column(name = "pizza_count")
+	@NotNull(message = "Pizza count is required")
+	@Positive(message = "Pizza count must be positive")
 	private Integer count;
 
 	public OrderInfo() {

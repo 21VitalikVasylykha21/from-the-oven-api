@@ -63,6 +63,10 @@ public class PizzaService {
 		return new PizzaSearchResponse(pizzas.getTotalElements(), pizzas.getContent());
 	}
 
+	public PizzaSearchResponse searchByName(String name) {
+		return search(name, List.of(""), List.of(""), 20, 1);
+	}
+
 	public Optional<Pizza> update(Long id, PizzaDTO updatePizzaDto) {
 		Optional<Pizza> optionalPizza = findById(id);
 		if (optionalPizza.isEmpty()) {

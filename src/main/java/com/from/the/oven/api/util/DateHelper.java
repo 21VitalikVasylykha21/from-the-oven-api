@@ -2,6 +2,7 @@ package com.from.the.oven.api.util;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -15,5 +16,9 @@ public class DateHelper {
 	public static String formatDate(Timestamp sqlTimestamp) {
 		Date date = new Date(sqlTimestamp.getTime());
 		return DATE_FORMAT.format(date);
+	}
+
+	public static Timestamp nowTimestamp() {
+		return Timestamp.valueOf(LocalDateTime.now());
 	}
 }

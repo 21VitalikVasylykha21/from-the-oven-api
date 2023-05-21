@@ -57,7 +57,6 @@ public class ContactUsController {
 	@PostMapping
 	public ApiResponse<ContactUsDTO> createContactUs(@RequestBody ContactUsDTO contactUsDTO) {
 		try {
-			contactUsService.create(contactUsDTO);
 			return new ApiResponse<>(HttpStatus.CREATED, List.of(new ContactUsDTO(contactUsService.create(contactUsDTO))));
 		} catch (ValidationException validationException) {
 			return new ApiResponse<>(HttpStatus.BAD_REQUEST, validationException);

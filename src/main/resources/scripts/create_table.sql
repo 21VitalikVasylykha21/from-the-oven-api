@@ -61,9 +61,9 @@ CREATE TABLE IF NOT EXISTS pizza_ingredient
 CREATE TABLE IF NOT EXISTS pizza_order
 (
     pizza_order_id     SERIAL PRIMARY KEY,
-    order_date         TIMESTAMP      NOT NULL DEFAULT NOW(),
-    is_delivered       BOOLEAN        NOT NULL DEFAULT FALSE,
-    call_user          BOOLEAN        NOT NULL DEFAULT TRUE,
+    order_date         TIMESTAMP      DEFAULT NOW(),
+    is_delivered       BOOLEAN        DEFAULT FALSE,
+    call_user          BOOLEAN        DEFAULT TRUE,
     delivery_address   TEXT           NOT NULL,
     total_amount       DECIMAL(10, 2) NOT NULL,
     customer_name      VARCHAR(100)   NOT NULL,

@@ -12,7 +12,8 @@ public class OrderInfoDTO {
 	private Integer size;
 	private Integer count;
 
-
+	public OrderInfoDTO() {
+	}
 	public OrderInfoDTO(OrderInfo orderInfo) {
 		this.name = orderInfo.getPizzaPrice().getPizza().getName();
 		this.size = orderInfo.getPizzaPrice().getSize().getSize();
