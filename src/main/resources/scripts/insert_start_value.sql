@@ -27,7 +27,7 @@ VALUES ('Tomatoes', 'Fresh, ripe tomatoes', 'https://artgallery-bucket.s3.eu-cen
        ('Spinach', 'Fresh spinach leaves', 'https://artgallery-bucket.s3.eu-central-1.amazonaws.com/ingredients/Spinach.png'),
        ('Chicken', 'Grilled chicken pieces', 'https://artgallery-bucket.s3.eu-central-1.amazonaws.com/ingredients/Chicken.png'),
        ('Ground Beef', 'Seasoned ground beef',
-        'https://artgallery-bucket.s3.eu-central-1.amazonaws.com/ingredients/Ground-Beef.pngg'),
+        'https://artgallery-bucket.s3.eu-central-1.amazonaws.com/ingredients/Ground-Beef.png'),
        ('Ricotta Cheese', 'Creamy ricotta cheese',
         'https://artgallery-bucket.s3.eu-central-1.amazonaws.com/ingredients/Ricotta-Cheese.png')
 ON CONFLICT DO NOTHING;
@@ -51,7 +51,7 @@ VALUES ('Small', 25),
 ON CONFLICT DO NOTHING;
 
 INSERT INTO pizza (name, image, description, rating)
-VALUES ('Margherita', 'https://artgallery-bucket.s3.eu-central-1.amazonaws.com/pizzas/Margherita.jpg',
+VALUES ('Margherita', 'https://artgallery-bucket.s3.eu-central-1.amazonaws.com/pizzas/Margherita.png',
         'A classic pizza topped with tomato sauce, mozzarella cheese, and fresh basil.', 2),
        ('Pepperoni', 'https://artgallery-bucket.s3.eu-central-1.amazonaws.com/pizzas/Pepperoni.png',
         'A delicious pizza topped with tomato sauce, mozzarella cheese, and spicy pepperoni slices.', 2),
