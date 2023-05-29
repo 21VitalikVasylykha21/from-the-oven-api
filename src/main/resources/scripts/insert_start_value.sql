@@ -13,7 +13,7 @@ VALUES ('Tomatoes', 'Fresh, ripe tomatoes', 'https://artgallery-bucket.s3.eu-cen
         'https://artgallery-bucket.s3.eu-central-1.amazonaws.com/ingredients/Italian-Sausage.png'),
        ('Bacon', 'Crispy bacon pieces', 'https://artgallery-bucket.s3.eu-central-1.amazonaws.com/ingredients/Bacon.png'),
        ('Pineapple', 'Juicy pineapple chunks',
-        'https://artgallery-bucket.s3.eu-central-1.amazonaws.com/ingredients/Pepperoni.png'),
+        'https://artgallery-bucket.s3.eu-central-1.amazonaws.com/ingredients/Pineapple.png'),
        ('Ham', 'Sliced ham', 'https://artgallery-bucket.s3.eu-central-1.amazonaws.com/ingredients/Ham.png'),
        ('Jalapenos', 'Spicy jalapeno peppers',
         'https://artgallery-bucket.s3.eu-central-1.amazonaws.com/ingredients/Jalapenos.png'),
@@ -167,8 +167,8 @@ DO $$
     END
 $$;
 
-INSERT INTO admin_user (username, password, email, is_admin)
-VALUES ('admin', 'admin', 'admin@example.com', true);
+INSERT INTO admin_user (username, password, email)
+VALUES ('admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'admin@example.com');
 
 INSERT INTO contact_us (name, email, message)
 VALUES

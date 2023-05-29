@@ -2,11 +2,13 @@ package com.from.the.oven.api.controller;
 
 import com.from.the.oven.api.dto.ApiResponse;
 import com.from.the.oven.api.dto.OrderDTO;
+import com.from.the.oven.api.entity.Order;
 import com.from.the.oven.api.exception.EntityNotFoundException;
 import com.from.the.oven.api.exception.ValidationException;
 import com.from.the.oven.api.service.OrderService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,9 +33,11 @@ public class OrderController {
 	private OrderService orderService;
 
 	@GetMapping
-	public ApiResponse<OrderDTO> getAllOrders(@RequestParam(name = "limit", defaultValue = "20") Integer limit) {
-		return new ApiResponse<>(
-				orderService.getAllOrders(limit).stream()
+	public ApiResponse<OrderDTO> getAllOrders(@RequestParam(name = "page", defaultValue = "1") Integer page,
+											  @RequestParam(name = "limit", defaultValue = "20") Integer limit) {
+		Page<Order> orders = orderService.getAllOrders(page, limit);
+		return new ApiResponse<>(orders.getTotalElements(),
+				orders.getContent().stream()
 						.map(OrderDTO::new)
 						.toList()
 		);

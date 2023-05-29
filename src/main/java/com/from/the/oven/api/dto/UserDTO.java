@@ -1,11 +1,13 @@
 package com.from.the.oven.api.dto;
 
+import com.from.the.oven.api.entity.User;
+
 /**
  * @author Vitalii Vasylykha
  * @company UnitedThinkers
  * @since 2023/05/29
  */
-public class User {
+public class UserDTO {
 	private Long id;
 
 	private String username;
@@ -13,6 +15,15 @@ public class User {
 	private String password;
 
 	private String email;
+
+	public UserDTO() {
+	}
+
+	public UserDTO(User user) {
+		this.id = user.getId();
+		this.email = user.getEmail();
+		this.username = user.getUsername();
+	}
 
 	public Long getId() {
 		return id;

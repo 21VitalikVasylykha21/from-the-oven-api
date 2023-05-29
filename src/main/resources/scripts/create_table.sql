@@ -82,11 +82,10 @@ CREATE TABLE IF NOT EXISTS pizza_order_info
 
 CREATE TABLE IF NOT EXISTS admin_user
 (
-    user_id  SERIAL PRIMARY KEY,
+    admin_user_id  SERIAL PRIMARY KEY,
     username VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255)        NOT NULL,
-    email    VARCHAR(255) UNIQUE NOT NULL,
-    is_admin BOOLEAN             NOT NULL DEFAULT FALSE
+    email    VARCHAR(255) UNIQUE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS contact_us

@@ -15,6 +15,7 @@ import com.from.the.oven.api.validator.Validator;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -32,11 +33,11 @@ public class OrderService {
 	@Autowired
 	private PizzaService pizzaService;
 
-	public List<Order> getAllOrders(Integer limit) {
+	public Page<Order> getAllOrders(Integer page, Integer limit) {
 		if (limit <= 0) {
 			throw new LimitApiRequestException();
 		}
-		return orderRepository.findAll(PageRequest.of(0, limit)).getContent();
+		return orderRepository.findAll(PageRequest.of(page - 1, limit));
 	}
 
 	public Order findOrderById(Long id) throws EntityNotFoundException {
