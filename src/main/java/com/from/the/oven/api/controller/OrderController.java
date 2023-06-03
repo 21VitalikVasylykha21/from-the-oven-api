@@ -64,7 +64,8 @@ public class OrderController {
 	@DeleteMapping("/{id}")
 	public ApiResponse<OrderDTO> deleteOrder(@PathVariable Long id) {
 		try {
-			return new ApiResponse<>(List.of(new OrderDTO(orderService.deleteOrder(id))));
+			orderService.deleteOrder(id);
+			return new ApiResponse<>(HttpStatus.OK);
 		} catch (EntityNotFoundException exception) {
 			return new ApiResponse<>(HttpStatus.BAD_REQUEST, exception);
 		}

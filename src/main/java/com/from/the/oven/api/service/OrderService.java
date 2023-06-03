@@ -17,6 +17,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 /**
@@ -37,7 +38,7 @@ public class OrderService {
 		if (limit <= 0) {
 			throw new LimitApiRequestException();
 		}
-		return orderRepository.findAll(PageRequest.of(page - 1, limit));
+		return orderRepository.findAll(PageRequest.of(page - 1, limit, Sort.by(Sort.Direction.DESC, "orderDate")));
 	}
 
 	public Order findOrderById(Long id) throws EntityNotFoundException {
@@ -56,10 +57,9 @@ public class OrderService {
 		return createOrder;
 	}
 
-	public Order deleteOrder(Long id) {
+	public void deleteOrder(Long id) {
 		Order deleteOrder = findOrderById(id);
 		orderRepository.delete(deleteOrder);
-		return deleteOrder;
 	}
 
 	private void createOrderInfos(Order createOrder, OrderDTO orderDTO) {
