@@ -126,7 +126,6 @@ WHERE p.name = 'Margherita' AND i.name IN ('Tomatoes', 'Mozzarella', 'Basil')
    OR p.name = 'Four Cheese' AND i.name IN ('Tomatoes', 'Mozzarella', 'Gouda', 'Cheddar', 'Parmesan')
 ON CONFLICT DO NOTHING;
 
-
 INSERT INTO pizza_order (order_date, total_amount, customer_name, customer_telephone, delivery_address)
 SELECT NOW() - INTERVAL '1 day' * (random() * 30),
        (random() * 50 + 10),

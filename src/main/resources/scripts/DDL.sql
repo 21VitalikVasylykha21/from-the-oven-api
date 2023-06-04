@@ -15,14 +15,12 @@ CREATE TABLE IF NOT EXISTS category
     name        VARCHAR(50) UNIQUE NOT NULL
 );
 
-
 CREATE TABLE IF NOT EXISTS size
 (
     size_id SERIAL PRIMARY KEY,
     name    VARCHAR(50) UNIQUE NOT NULL,
     size_cm NUMERIC(10)        NOT NULL
 );
-
 
 CREATE TABLE IF NOT EXISTS pizza
 (
@@ -32,7 +30,6 @@ CREATE TABLE IF NOT EXISTS pizza
     rating      INT                 NOT NULL DEFAULT 0,
     description TEXT
 );
-
 
 CREATE TABLE IF NOT EXISTS pizza_category
 (
