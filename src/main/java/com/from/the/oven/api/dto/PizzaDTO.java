@@ -10,7 +10,7 @@ import java.util.List;
  * @company UzhNU
  * @since 2023/04/11
  */
-public class PizzaDTO implements EntityDTO {
+public class PizzaDTO {
 	private Long id;
 	private String name;
 	private String description;
