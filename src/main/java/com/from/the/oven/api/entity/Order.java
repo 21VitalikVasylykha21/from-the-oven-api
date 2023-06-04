@@ -25,7 +25,7 @@ import java.util.Objects;
 
 /**
  * @author Vitalii Vasylykha
- * @company UnitedThinkers
+ * @company UzhNU
  * @since 2023/05/17
  */
 @Entity

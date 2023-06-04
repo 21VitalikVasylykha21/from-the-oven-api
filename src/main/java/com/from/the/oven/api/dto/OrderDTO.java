@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * @author Vitalii Vasylykha
- * @company UnitedThinkers
+ * @company UzhNU
  * @since 2023/05/17
  */
 public class OrderDTO {

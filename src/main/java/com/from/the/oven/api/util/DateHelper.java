@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  * @author Vitalii Vasylykha
- * @company UnitedThinkers
+ * @company UzhNU
  * @since 2023/05/18
  */
 public class DateHelper {

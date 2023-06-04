@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * @author Vitalii Vasylykha
- * @company UnitedThinkers
+ * @company UzhNU
  * @since 2023/05/19
  */
 public interface ContactUsRepository extends JpaRepository<ContactUs, Long> {

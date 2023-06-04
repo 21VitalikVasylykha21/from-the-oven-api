@@ -4,7 +4,7 @@ import com.from.the.oven.api.entity.ContactUs;
 
 /**
  * @author Vitalii Vasylykha
- * @company UnitedThinkers
+ * @company UzhNU
  * @since 2023/05/19
  */
 public class ContactUsDTO {

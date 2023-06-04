@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * @author Vitalii Vasylykha
- * @company UnitedThinkers
+ * @company UzhNU
  * @since 2023/04/11
  */
 @Repository

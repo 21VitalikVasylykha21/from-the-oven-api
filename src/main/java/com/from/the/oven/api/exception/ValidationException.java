@@ -2,7 +2,7 @@ package com.from.the.oven.api.exception;
 
 /**
  * @author Vitalii Vasylykha
- * @company UnitedThinkers
+ * @company UzhNU
  * @since 2023/05/19
  */
 public class ValidationException extends RuntimeException {

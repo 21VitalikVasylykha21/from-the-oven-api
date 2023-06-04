@@ -4,7 +4,7 @@ import com.from.the.oven.api.entity.Category;
 
 /**
  * @author Vitalii Vasylykha
- * @company UnitedThinkers
+ * @company UzhNU
  * @since 2023/04/17
  */
 public class CategoryDTO implements EntityDTO {

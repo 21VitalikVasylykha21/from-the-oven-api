@@ -6,7 +6,7 @@ import jakarta.persistence.Converter;
 
 /**
  * @author Vitalii Vasylykha
- * @company UnitedThinkers
+ * @company UzhNU
  * @since 2023/04/17
  */
 @Converter(autoApply = true)

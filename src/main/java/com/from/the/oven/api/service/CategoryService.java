@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author Vitalii Vasylykha
- * @company UnitedThinkers
+ * @company UzhNU
  * @since 2023/04/17
  */
 @Service

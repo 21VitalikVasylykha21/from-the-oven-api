@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * @author Vitalii Vasylykha
- * @company UnitedThinkers
+ * @company UzhNU
  * @since 2023/05/20
  */
 public record PizzaSearchResponse(Long total, List<Pizza> pizzas) {

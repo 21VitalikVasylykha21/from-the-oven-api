@@ -2,7 +2,7 @@ package com.from.the.oven.api.enums;
 
 /**
  * @author Vitalii Vasylykha
- * @company UnitedThinkers
+ * @company UzhNU
  * @since 2023/04/17
  */
 public enum PizzaSize {

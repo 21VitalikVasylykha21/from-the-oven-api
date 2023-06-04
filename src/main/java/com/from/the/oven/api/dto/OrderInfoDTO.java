@@ -4,7 +4,7 @@ import com.from.the.oven.api.entity.OrderInfo;
 
 /**
  * @author Vitalii Vasylykha
- * @company UnitedThinkers
+ * @company UzhNU
  * @since 2023/05/18
  */
 public class OrderInfoDTO {

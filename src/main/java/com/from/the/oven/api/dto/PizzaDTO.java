@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * @author Vitalii Vasylykha
- * @company UnitedThinkers
+ * @company UzhNU
  * @since 2023/04/11
  */
 public class PizzaDTO implements EntityDTO {

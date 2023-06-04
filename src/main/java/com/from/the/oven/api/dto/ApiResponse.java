@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 
 /**
  * @author Vitalii Vasylykha
- * @company UnitedThinkers
+ * @company UzhNU
  * @since 2023/04/23
  */
 public class ApiResponse<T> {

@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 /**
  * @author Vitalii Vasylykha
- * @company UnitedThinkers
+ * @company UzhNU
  * @since 2023/04/15
  */
 @Entity

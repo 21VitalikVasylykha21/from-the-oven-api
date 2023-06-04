@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * @author Vitalii Vasylykha
- * @company UnitedThinkers
+ * @company UzhNU
  * @since 2023/04/30
  */
 public interface PizzaIngredientRepository extends JpaRepository<PizzaIngredient, PizzaIngredientId> {

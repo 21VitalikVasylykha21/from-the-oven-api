@@ -14,7 +14,7 @@ import jakarta.validation.constraints.Positive;
 
 /**
  * @author Vitalii Vasylykha
- * @company UnitedThinkers
+ * @company UzhNU
  * @since 2023/05/18
  */
 @Entity

@@ -4,7 +4,7 @@ import com.from.the.oven.api.entity.Ingredient;
 
 /**
  * @author Vitalii Vasylykha
- * @company UnitedThinkers
+ * @company UzhNU
  * @since 2023/04/15
  */
 public class IngredientDTO implements EntityDTO{

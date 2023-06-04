@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * @author Vitalii Vasylykha
- * @company UnitedThinkers
+ * @company UzhNU
  * @since 2023/04/15
  */
 public interface IngredientRepository extends JpaRepository<Ingredient, Long> {
