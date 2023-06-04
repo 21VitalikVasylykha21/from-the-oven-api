@@ -13,7 +13,7 @@
 ## Встановлення та запуск проекту:
 1. Клонуйте репозиторій на свій локальний комп'ютер.
    ```
-   git clone https://github.com/your-username/your-repository.git
+   git clone https://github.com/21VitalikVasylykha21/from-the-oven-api.git
    ```
 2. Відкрийте проект у вашій улюбленій інтегрованій середовищі розробки (наприклад, IntelliJ IDEA, Eclipse і т.д.).
 3. Відкрийте файл `pom.xml` та запустіть Maven для завантаження всіх необхідних залежностей.
