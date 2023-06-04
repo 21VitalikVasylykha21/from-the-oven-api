@@ -16,7 +16,8 @@
    git clone https://github.com/your-username/your-repository.git
    ```
 2. Відкрийте проект у вашій улюбленій інтегрованій середовищі розробки (наприклад, IntelliJ IDEA, Eclipse і т.д.).
-3. Налаштуйте з'єднання до бази даних PostgreSQL в файлі `application.properties`, змінивши значення змінних `spring.datasource.url`, `spring.datasource.username` та `spring.datasource.password`.
-4. Виконайте файли `src/main.resorecs/scripts/DDL.sql`, `src/main.resorecs/scripts/DML.sql` для завтаження та заповнення всіх необхідних таблиць в PostgreSQL  
-5. Запустіть проект та API-сервер на вашому локальному сервері.
-6. Ви можете скористатись інструментом Postman або будь-яким іншим засобом для тестування API, щоб взаємодіяти з сервером і перевірити його функціональність.
+3. Відкрийте файл `pom.xml` та запустіть Maven для завантаження всіх необхідних залежностей.
+4. Налаштуйте з'єднання до бази даних PostgreSQL в файлі `application.properties`, змінивши значення змінних `spring.datasource.url`, `spring.datasource.username` та `spring.datasource.password`.
+5. Виконайте файли `src/main.resorecs/scripts/DDL.sql`, `src/main.resorecs/scripts/DML.sql` для завтаження та заповнення всіх необхідних таблиць в PostgreSQL.
+6. Запустіть проект та API-сервер на вашому локальному сервері.
+7. Ви можете скористатись інструментом Postman або будь-яким іншим засобом для тестування API, щоб взаємодіяти з сервером і перевірити його функціональність.
